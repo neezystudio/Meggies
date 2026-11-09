@@ -3,3 +3,7 @@ dist
 .DS_Store
 *.log
 .env
+.firebase
+firebase-debug*.log
+firestore-debug.log
+ui-debug.log

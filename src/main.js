@@ -272,9 +272,17 @@ showTestimonial(0);
 /* ---------- Contact form ---------- */
 const form = $('#contact-form');
 const status = $('#form-status');
-form.addEventListener('submit', (e) => {
+const submitBtn = $('button[type="submit"]', form);
+
+const mailtoFallback = (data) => {
+  const subject = encodeURIComponent(`${data.service} enquiry from ${data.name}`);
+  const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`);
+  window.location.href = `mailto:hello@meggies.com?subject=${subject}&body=${body}`;
+};
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const fields = $$('input, select, textarea', form);
+  const fields = $$('.field input, .field select, .field textarea', form);
   let valid = true;
   fields.forEach((f) => {
     const ok = f.checkValidity();
@@ -286,14 +294,33 @@ form.addEventListener('submit', (e) => {
     status.className = 'form__status is-error';
     return;
   }
-  // TODO: connect to a form backend (e.g. Formspree, EmailJS, or a serverless function).
   const data = Object.fromEntries(new FormData(form));
-  const subject = encodeURIComponent(`${data.service} enquiry from ${data.name}`);
-  const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`);
-  window.location.href = `mailto:hello@meggies.com?subject=${subject}&body=${body}`;
-  status.textContent = 'Thank you! Your email app should open to send the message.';
-  status.className = 'form__status is-success';
-  form.reset();
+  const label = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  status.textContent = '';
+  status.className = 'form__status';
+
+  try {
+    // Handled by the Firebase Cloud Function `api` (see functions/index.js), saved to Firestore.
+    const res = await fetch('/api/enquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    status.textContent = "Thank you! Your message has been sent — I'll be in touch within 24 hours.";
+    status.className = 'form__status is-success';
+    form.reset();
+  } catch (err) {
+    console.error('Enquiry failed, falling back to email', err);
+    status.textContent = 'Could not send right now, opening your email app instead…';
+    status.className = 'form__status is-error';
+    mailtoFallback(data);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = label;
+  }
 });
 
 /* ---------- Custom cursor + magnetic buttons ---------- */
