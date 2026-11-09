@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Contact-form enquiries: written only by the Cloud Function (Admin SDK bypasses rules).
+    // No client may read or write them directly.
+    match /enquiries/{id} {
+      allow read, write: if false;
+    }
+
+    // Public site content (for managing projects/properties from Firestore later).
+    match /projects/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /properties/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Everything else is locked down.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

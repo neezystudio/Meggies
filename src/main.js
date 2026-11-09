@@ -35,9 +35,10 @@ $('#work-grid').innerHTML = projects
   .map(
     (p, i) => `
     <article class="project reveal" data-category="${p.category}" data-index="${i}" tabindex="0" role="button" aria-label="Open ${p.title}">
-      <div class="project__media" style="background:${p.art}">
+      <div class="project__media tone-${i % 3}">
         <span class="project__glyph">${p.glyph}</span>
-        <span class="project__view">View</span>
+        <span class="project__num">${String(i + 1).padStart(2, '0')}</span>
+        <span class="project__view">View ↗</span>
       </div>
       <div class="project__meta">
         <div>
@@ -55,7 +56,7 @@ $('#properties-grid').innerHTML = properties
   .map(
     (p, i) => `
     <article class="property reveal" style="--d:${i * 0.1}s">
-      <div class="property__media" style="background:${p.art}">
+      <div class="property__media tone-${(i + 1) % 3}">
         <span class="property__status">${p.status}</span>
         <svg class="property__house" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
       </div>
@@ -189,7 +190,7 @@ let lastFocus = null;
 const openProject = (i) => {
   const p = projects[i];
   modalBody.innerHTML = `
-    <div class="modal__media" style="background:${p.art}"><span>${p.glyph}</span></div>
+    <div class="modal__media tone-${i % 3}"><span>${p.glyph}</span></div>
     <div class="modal__text">
       <p class="eyebrow">${categoryLabel[p.category]} · ${p.year}</p>
       <h3>${p.title}</h3>
@@ -271,9 +272,17 @@ showTestimonial(0);
 /* ---------- Contact form ---------- */
 const form = $('#contact-form');
 const status = $('#form-status');
-form.addEventListener('submit', (e) => {
+const submitBtn = $('button[type="submit"]', form);
+
+const mailtoFallback = (data) => {
+  const subject = encodeURIComponent(`${data.service} enquiry from ${data.name}`);
+  const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`);
+  window.location.href = `mailto:hello@meggies.com?subject=${subject}&body=${body}`;
+};
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const fields = $$('input, select, textarea', form);
+  const fields = $$('.field input, .field select, .field textarea', form);
   let valid = true;
   fields.forEach((f) => {
     const ok = f.checkValidity();
@@ -285,14 +294,33 @@ form.addEventListener('submit', (e) => {
     status.className = 'form__status is-error';
     return;
   }
-  // TODO: connect to a form backend (e.g. Formspree, EmailJS, or a serverless function).
   const data = Object.fromEntries(new FormData(form));
-  const subject = encodeURIComponent(`${data.service} enquiry from ${data.name}`);
-  const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`);
-  window.location.href = `mailto:hello@meggies.com?subject=${subject}&body=${body}`;
-  status.textContent = 'Thank you! Your email app should open to send the message.';
-  status.className = 'form__status is-success';
-  form.reset();
+  const label = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  status.textContent = '';
+  status.className = 'form__status';
+
+  try {
+    // Handled by the Firebase Cloud Function `api` (see functions/index.js), saved to Firestore.
+    const res = await fetch('/api/enquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    status.textContent = "Thank you! Your message has been sent — I'll be in touch within 24 hours.";
+    status.className = 'form__status is-success';
+    form.reset();
+  } catch (err) {
+    console.error('Enquiry failed, falling back to email', err);
+    status.textContent = 'Could not send right now, opening your email app instead…';
+    status.className = 'form__status is-error';
+    mailtoFallback(data);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = label;
+  }
 });
 
 /* ---------- Custom cursor + magnetic buttons ---------- */
@@ -331,7 +359,7 @@ if (!isTouch && !prefersReducedMotion) {
 
   // Subtle hero glow follows the pointer
   const glow = $('.hero__glow');
-  $('.hero').addEventListener('mousemove', (e) => {
+  if (glow) $('.hero').addEventListener('mousemove', (e) => {
     glow.style.setProperty('--x', `${e.clientX}px`);
     glow.style.setProperty('--y', `${e.clientY}px`);
   });
@@ -340,4 +368,5 @@ if (!isTouch && !prefersReducedMotion) {
 }
 
 /* ---------- Misc ---------- */
-$('#year').textContent = new Date().getFullYear();
+const year = new Date().getFullYear();
+$$('#year, .js-year').forEach((el) => (el.textContent = year));
