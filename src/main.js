@@ -35,9 +35,10 @@ $('#work-grid').innerHTML = projects
   .map(
     (p, i) => `
     <article class="project reveal" data-category="${p.category}" data-index="${i}" tabindex="0" role="button" aria-label="Open ${p.title}">
-      <div class="project__media" style="background:${p.art}">
+      <div class="project__media tone-${i % 3}">
         <span class="project__glyph">${p.glyph}</span>
-        <span class="project__view">View</span>
+        <span class="project__num">${String(i + 1).padStart(2, '0')}</span>
+        <span class="project__view">View ↗</span>
       </div>
       <div class="project__meta">
         <div>
@@ -55,7 +56,7 @@ $('#properties-grid').innerHTML = properties
   .map(
     (p, i) => `
     <article class="property reveal" style="--d:${i * 0.1}s">
-      <div class="property__media" style="background:${p.art}">
+      <div class="property__media tone-${(i + 1) % 3}">
         <span class="property__status">${p.status}</span>
         <svg class="property__house" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
       </div>
@@ -189,7 +190,7 @@ let lastFocus = null;
 const openProject = (i) => {
   const p = projects[i];
   modalBody.innerHTML = `
-    <div class="modal__media" style="background:${p.art}"><span>${p.glyph}</span></div>
+    <div class="modal__media tone-${i % 3}"><span>${p.glyph}</span></div>
     <div class="modal__text">
       <p class="eyebrow">${categoryLabel[p.category]} · ${p.year}</p>
       <h3>${p.title}</h3>
@@ -331,7 +332,7 @@ if (!isTouch && !prefersReducedMotion) {
 
   // Subtle hero glow follows the pointer
   const glow = $('.hero__glow');
-  $('.hero').addEventListener('mousemove', (e) => {
+  if (glow) $('.hero').addEventListener('mousemove', (e) => {
     glow.style.setProperty('--x', `${e.clientX}px`);
     glow.style.setProperty('--y', `${e.clientY}px`);
   });
@@ -340,4 +341,5 @@ if (!isTouch && !prefersReducedMotion) {
 }
 
 /* ---------- Misc ---------- */
-$('#year').textContent = new Date().getFullYear();
+const year = new Date().getFullYear();
+$$('#year, .js-year').forEach((el) => (el.textContent = year));
