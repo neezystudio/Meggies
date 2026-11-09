@@ -1,6 +1,6 @@
 # Meggie's
 
-A modern portfolio site for a multidisciplinary creative — **graphic design**, **web design & development**, and **real estate**. Black, white & gold theme, built with vanilla JavaScript and [Vite](https://vitejs.dev).
+A modern portfolio site for a multidisciplinary creative — **graphic design**, **web design & development**, and **real estate**. Bold brutalist black, white & gold theme (Archivo Black + Space Grotesk/Mono), built with vanilla JavaScript and [Vite](https://vitejs.dev).
 
 ## Features
 

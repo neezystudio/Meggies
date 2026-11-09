@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meggie's — Design · Web · Real Estate</title>
+    <title>MEGGIE'S — Graphic / Web / Property</title>
     <meta
       name="description"
-      content="Meggie's — graphic designer, web designer & developer, and real estate professional. Crafting bold brands, beautiful websites, and finding the right property."
+      content="Meggie's — graphic designer, web designer & developer, and real estate professional. Bold brands, sharp websites, the right property."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -22,19 +22,19 @@
 
     <!-- Preloader -->
     <div class="preloader" id="preloader">
-      <span class="preloader__logo">Meggie<em>'s</em></span>
+      <span class="preloader__logo">MEGGIE'S</span>
       <span class="preloader__bar"><span></span></span>
     </div>
 
     <!-- Header -->
     <header class="header" id="header">
-      <a href="#home" class="logo">Meggie<em>'s</em></a>
+      <a href="#home" class="logo">MEGGIE'S<span class="logo__sq"></span></a>
       <nav class="nav" id="nav" aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#properties">Properties</a>
-        <a href="#contact" class="btn btn--gold btn--sm">Let's Talk</a>
+        <a href="#about"><i>01</i>About</a>
+        <a href="#services"><i>02</i>Services</a>
+        <a href="#work"><i>03</i>Work</a>
+        <a href="#properties"><i>04</i>Property</a>
+        <a href="#contact" class="btn btn--gold btn--sm">Let's Talk ↗</a>
       </nav>
       <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span>
@@ -44,71 +44,72 @@
     <main>
       <!-- Hero -->
       <section class="hero" id="home">
-        <div class="hero__grid" aria-hidden="true"></div>
         <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__top container">
+          <span>Portfolio ©<span class="js-year"></span></span>
+          <span>Nairobi, KE</span>
+          <span class="hero__avail"><b></b>Available for work</span>
+        </div>
         <div class="container hero__inner">
-          <p class="eyebrow reveal">Graphic Design · Web Design &amp; Development · Real Estate</p>
           <h1 class="hero__title">
-            <span class="line"><span>Designing</span></span>
-            <span class="line"><span>spaces, <em class="gold">brands</em></span></span>
-            <span class="line"><span>&amp; <span class="typed" id="typed">websites</span></span></span>
+            <span class="line"><span>Graphic<em>/</em></span></span>
+            <span class="line"><span>Web<em>/</em></span></span>
+            <span class="line"><span class="outline">Property<em>/</em></span></span>
           </h1>
-          <p class="hero__lead reveal">
-            I'm Meggie — a creative who builds bold visual identities, crafts modern websites,
-            and helps people find properties they love. One eye for detail, three disciplines.
-          </p>
-          <div class="hero__cta reveal">
-            <a href="#work" class="btn btn--gold magnetic">View My Work</a>
-            <a href="#properties" class="btn btn--ghost magnetic">Explore Properties</a>
+          <div class="hero__bottom">
+            <ul class="hero__list reveal">
+              <li><span>A</span>Brand identity &amp; print</li>
+              <li><span>B</span>Websites that convert</li>
+              <li><span>C</span>Homes, sales &amp; lettings</li>
+            </ul>
+            <div class="hero__block reveal">
+              <p class="hero__lead">
+                I'm Meggie. I design brands, build websites and sell homes. Right now I'm making
+                <span class="typed" id="typed">websites</span>
+              </p>
+              <div class="hero__cta">
+                <a href="#work" class="btn btn--black magnetic">See Work →</a>
+                <a href="#properties" class="btn btn--line magnetic">Properties →</a>
+              </div>
+            </div>
           </div>
         </div>
-        <a href="#about" class="scroll-hint" aria-label="Scroll down">
-          <span></span>
-        </a>
       </section>
 
       <!-- Marquee -->
       <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
-          <span>Branding</span><i>✦</i><span>Logo Design</span><i>✦</i><span>UI / UX</span><i>✦</i>
-          <span>Web Development</span><i>✦</i><span>Real Estate</span><i>✦</i><span>Property Marketing</span><i>✦</i>
-          <span>Branding</span><i>✦</i><span>Logo Design</span><i>✦</i><span>UI / UX</span><i>✦</i>
-          <span>Web Development</span><i>✦</i><span>Real Estate</span><i>✦</i><span>Property Marketing</span><i>✦</i>
+          <span>Branding</span><i>■</i><span>Logo Design</span><i>■</i><span>UI / UX</span><i>■</i>
+          <span>Web Development</span><i>■</i><span>Real Estate</span><i>■</i><span>Property Marketing</span><i>■</i>
+          <span>Branding</span><i>■</i><span>Logo Design</span><i>■</i><span>UI / UX</span><i>■</i>
+          <span>Web Development</span><i>■</i><span>Real Estate</span><i>■</i><span>Property Marketing</span><i>■</i>
         </div>
       </div>
 
       <!-- About -->
       <section class="section about" id="about">
-        <div class="container about__inner">
-          <div class="about__visual reveal">
-            <div class="about__frame">
-              <div class="about__portrait">
-                <span>M</span>
-              </div>
-            </div>
-            <div class="about__badge">
-              <strong>8+</strong>
-              <span>Years of<br />creative work</span>
+        <div class="container">
+          <div class="label reveal"><span>(01)</span> About</div>
+          <div class="about__inner">
+            <h2 class="section-title reveal">
+              One eye for detail. <mark>Three</mark> disciplines.
+            </h2>
+            <div class="about__content">
+              <p class="reveal">
+                I'm a multidisciplinary creative. I make brand identities, print and websites
+                that are clean and fast and do their job.
+              </p>
+              <p class="reveal">
+                In real estate, I use the same design-led thinking to help clients buy, sell and
+                rent with confidence. Strong listings, honest advice, keys in hand.
+              </p>
             </div>
           </div>
-          <div class="about__content">
-            <p class="eyebrow reveal">About Me</p>
-            <h2 class="section-title reveal">Where <em class="gold">creativity</em> meets <em class="gold">property</em>.</h2>
-            <p class="reveal">
-              I'm a multidisciplinary creative with a passion for clean, purposeful design. From
-              crafting brand identities and print collateral to designing and building fast,
-              responsive websites — I bring ideas to life with precision and style.
-            </p>
-            <p class="reveal">
-              In real estate, that same design-led thinking helps my clients buy, sell, and rent
-              with confidence. Beautiful listings, honest advice, and a smooth process from first
-              viewing to keys in hand.
-            </p>
-            <div class="stats">
-              <div class="stat reveal"><strong data-count="120">0</strong><span>Projects Delivered</span></div>
-              <div class="stat reveal"><strong data-count="60">0</strong><span>Properties Closed</span></div>
-              <div class="stat reveal"><strong data-count="95">0</strong><span>Happy Clients</span></div>
-            </div>
+          <div class="stats">
+            <div class="stat reveal"><strong data-count="120">0</strong><span>Projects delivered</span></div>
+            <div class="stat reveal"><strong data-count="60">0</strong><span>Properties closed</span></div>
+            <div class="stat reveal"><strong data-count="95">0</strong><span>Happy clients</span></div>
+            <div class="stat stat--gold reveal"><strong data-count="8">0</strong><span>Years in the game</span></div>
           </div>
         </div>
       </section>
@@ -116,10 +117,8 @@
       <!-- Services -->
       <section class="section services" id="services">
         <div class="container">
-          <div class="section-head">
-            <p class="eyebrow reveal">What I Do</p>
-            <h2 class="section-title reveal">Services built around <em class="gold">you</em>.</h2>
-          </div>
+          <div class="label reveal"><span>(02)</span> Services</div>
+          <h2 class="section-title reveal">What I do<mark>.</mark></h2>
           <div class="services__grid" id="services-grid"></div>
         </div>
       </section>
@@ -127,14 +126,12 @@
       <!-- Work -->
       <section class="section work" id="work">
         <div class="container">
-          <div class="section-head section-head--row">
-            <div>
-              <p class="eyebrow reveal">Selected Work</p>
-              <h2 class="section-title reveal">Recent <em class="gold">projects</em>.</h2>
-            </div>
+          <div class="label reveal"><span>(03)</span> Selected Work</div>
+          <div class="section-head--row">
+            <h2 class="section-title reveal">Projects<mark>.</mark></h2>
             <div class="filters reveal" id="filters" role="tablist">
               <button class="filter is-active" data-filter="all">All</button>
-              <button class="filter" data-filter="graphic">Graphic Design</button>
+              <button class="filter" data-filter="graphic">Graphic</button>
               <button class="filter" data-filter="web">Web</button>
               <button class="filter" data-filter="realestate">Real Estate</button>
             </div>
@@ -146,11 +143,9 @@
       <!-- Properties -->
       <section class="section properties" id="properties">
         <div class="container">
-          <div class="section-head section-head--row">
-            <div>
-              <p class="eyebrow reveal">Real Estate</p>
-              <h2 class="section-title reveal">Featured <em class="gold">properties</em>.</h2>
-            </div>
+          <div class="label reveal"><span>(04)</span> Real Estate</div>
+          <div class="section-head--row">
+            <h2 class="section-title reveal">On the market<mark>.</mark></h2>
             <p class="section-sub reveal">
               Handpicked homes and investment opportunities. Enquire for viewings and full details.
             </p>
@@ -162,15 +157,12 @@
       <!-- Process -->
       <section class="section process">
         <div class="container">
-          <div class="section-head">
-            <p class="eyebrow reveal">How I Work</p>
-            <h2 class="section-title reveal">A simple, <em class="gold">proven</em> process.</h2>
-          </div>
+          <div class="label reveal"><span>(05)</span> Process</div>
           <ol class="process__list">
-            <li class="reveal"><span>01</span><h3>Discover</h3><p>We talk goals, audience, budget and timelines — for a brand, a website or a property.</p></li>
-            <li class="reveal"><span>02</span><h3>Design</h3><p>Concepts, wireframes or a curated property shortlist — refined together until it's right.</p></li>
-            <li class="reveal"><span>03</span><h3>Deliver</h3><p>Final files, a launched website, or keys in hand. Clean, on time and stress-free.</p></li>
-            <li class="reveal"><span>04</span><h3>Support</h3><p>Ongoing updates, maintenance and advice. I'm here long after the project ends.</p></li>
+            <li class="reveal"><span>01</span><h3>Discover</h3><p>We talk goals, audience, budget and timelines for a brand, a website or a property.</p></li>
+            <li class="reveal"><span>02</span><h3>Design</h3><p>Concepts, wireframes or a property shortlist, refined together until it's right.</p></li>
+            <li class="reveal"><span>03</span><h3>Deliver</h3><p>Final files, a live website, or keys in hand. On time, no stress.</p></li>
+            <li class="reveal"><span>04</span><h3>Support</h3><p>Updates, maintenance and advice after the project ends.</p></li>
           </ol>
         </div>
       </section>
@@ -178,7 +170,7 @@
       <!-- Testimonials -->
       <section class="section testimonials">
         <div class="container">
-          <p class="eyebrow reveal center">Kind Words</p>
+          <div class="label reveal"><span>(06)</span> Kind Words</div>
           <div class="testimonial" id="testimonial" aria-live="polite"></div>
           <div class="testimonial__dots" id="testimonial-dots"></div>
         </div>
@@ -186,65 +178,67 @@
 
       <!-- Contact -->
       <section class="section contact" id="contact">
-        <div class="container contact__inner">
-          <div class="contact__info">
-            <p class="eyebrow reveal">Get In Touch</p>
-            <h2 class="section-title reveal">Let's create something <em class="gold">remarkable</em>.</h2>
-            <p class="reveal">
-              Need a brand, a website, or your next home? Tell me about it and I'll get back to
-              you within 24 hours.
-            </p>
-            <ul class="contact__list reveal">
-              <li><span>Email</span><a href="mailto:hello@meggies.com">hello@meggies.com</a></li>
-              <li><span>Phone</span><a href="tel:+254797554904">0797 554 904</a></li>
-              <li><span>Based in</span>Nairobi, Kenya</li>
-            </ul>
-            <div class="socials reveal">
-              <a href="#" aria-label="Instagram">IG</a>
-              <a href="#" aria-label="Behance">Bē</a>
-              <a href="#" aria-label="LinkedIn">in</a>
-              <a href="#" aria-label="Dribbble">Dr</a>
+        <div class="container">
+          <div class="label reveal"><span>(07)</span> Contact</div>
+          <h2 class="contact__title reveal">Let's<br /><mark>talk</mark>↗</h2>
+          <div class="contact__inner">
+            <div class="contact__info">
+              <p class="reveal">
+                Need a brand, a website, or your next home? Tell me about it and I'll get back to
+                you within 24 hours.
+              </p>
+              <ul class="contact__list reveal">
+                <li><span>Email</span><a href="mailto:hello@meggies.com">hello@meggies.com</a></li>
+                <li><span>Phone</span><a href="tel:+254797554904">0797 554 904</a></li>
+                <li><span>Based</span>Nairobi, Kenya</li>
+              </ul>
+              <div class="socials reveal">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Behance">BĒ</a>
+                <a href="#" aria-label="LinkedIn">IN</a>
+                <a href="#" aria-label="Dribbble">DR</a>
+              </div>
             </div>
+            <form class="form reveal" id="contact-form" novalidate>
+              <div class="form__row">
+                <label class="field">
+                  <input type="text" name="name" placeholder=" " required />
+                  <span>Your name</span>
+                </label>
+                <label class="field">
+                  <input type="email" name="email" placeholder=" " required />
+                  <span>Email address</span>
+                </label>
+              </div>
+              <label class="field field--select">
+                <select name="service" required>
+                  <option value="" disabled selected hidden></option>
+                  <option>Graphic Design</option>
+                  <option>Web Design &amp; Development</option>
+                  <option>Real Estate — Buying</option>
+                  <option>Real Estate — Selling / Letting</option>
+                  <option>Something else</option>
+                </select>
+                <span>I'm interested in</span>
+              </label>
+              <label class="field">
+                <textarea name="message" rows="5" placeholder=" " required></textarea>
+                <span>Tell me about your project</span>
+              </label>
+              <button type="submit" class="btn btn--gold btn--block magnetic">Send Message →</button>
+              <p class="form__status" id="form-status" role="status"></p>
+            </form>
           </div>
-          <form class="form reveal" id="contact-form" novalidate>
-            <div class="form__row">
-              <label class="field">
-                <input type="text" name="name" placeholder=" " required />
-                <span>Your name</span>
-              </label>
-              <label class="field">
-                <input type="email" name="email" placeholder=" " required />
-                <span>Email address</span>
-              </label>
-            </div>
-            <label class="field field--select">
-              <select name="service" required>
-                <option value="" disabled selected hidden></option>
-                <option>Graphic Design</option>
-                <option>Web Design &amp; Development</option>
-                <option>Real Estate — Buying</option>
-                <option>Real Estate — Selling / Letting</option>
-                <option>Something else</option>
-              </select>
-              <span>I'm interested in</span>
-            </label>
-            <label class="field">
-              <textarea name="message" rows="5" placeholder=" " required></textarea>
-              <span>Tell me about your project</span>
-            </label>
-            <button type="submit" class="btn btn--gold btn--block magnetic">Send Message</button>
-            <p class="form__status" id="form-status" role="status"></p>
-          </form>
         </div>
       </section>
     </main>
 
     <footer class="footer">
       <div class="container footer__inner">
-        <a href="#home" class="logo">Meggie<em>'s</em></a>
-        <p>© <span id="year"></span> Meggie's. Design · Web · Real Estate.</p>
-        <a href="#home" class="to-top" aria-label="Back to top">↑</a>
+        <p>© <span id="year"></span> Meggie's — Graphic / Web / Property</p>
+        <a href="#home" class="to-top" aria-label="Back to top">Back to top ↑</a>
       </div>
+      <div class="footer__mark" aria-hidden="true">MEGGIE'S</div>
     </footer>
 
     <!-- Modal -->
